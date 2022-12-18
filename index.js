@@ -14,13 +14,11 @@ app.get("/about", (req, res)=>{
     res.json({"message":"About Page"})
 });
 
-app.get("/users", (req, res)=>{
-    const userData = axios("https://jsonplaceholder.typicode.com/users").then(
-        (res)=>{
-            console.log(res.json(data))
-        }
-    )
-})
+app.get("/users", async (req, res)=>{
+    const userData = await axios("https://dummyjson.com/products")
+            res.json(userData.data)
+        });
+
 
 app.listen(port, ()=>{
     console.log(`server is running on port ${port}`)
